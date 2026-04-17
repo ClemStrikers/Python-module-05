@@ -118,7 +118,7 @@ class DataStream:
                       f"Can't process element in stream: {element}")
 
     def print_processors_stats(self) -> None:
-        print("== DataStream statistics ==")
+        print("\n== DataStream statistics ==")
         if not self._processors:
             print("No processor found, no data")
             return
@@ -143,11 +143,11 @@ class DataStream:
 
 def main() -> None:
     print("=== Code Nexus- Data Pipeline ===")
-    print("Initialize Data Stream...")
+    print("\nInitialize Data Stream...")
     ds = DataStream()
     ds.print_processors_stats()
 
-    print("Registering Processors")
+    print("\nRegistering Processors")
     ds.register_processor(NumericProcessor())
     ds.register_processor(TextProcessor())
     ds.register_processor(LogProcessor())
@@ -164,11 +164,11 @@ def main() -> None:
         ['Hi', 'five']
     ]
 
-    print(f"Send first batch of data on stream: {batch1}")
+    print(f"\nSend first batch of data on stream: {batch1}")
     ds.process_stream(batch1)
     ds.print_processors_stats()
 
-    print("Send 3 processed data from each processor to a CSV plugin:")
+    print("\nSend 3 processed data from each processor to a CSV plugin:")
     csv_plugin = CSVExport()
     ds.output_pipeline(3, csv_plugin)
     ds.print_processors_stats()
@@ -185,11 +185,11 @@ def main() -> None:
         'World hello'
     ]
 
-    print(f"Send another batch of data: {batch2}")
+    print(f"\nSend another batch of data: {batch2}")
     ds.process_stream(batch2)
     ds.print_processors_stats()
 
-    print("Send 5 processed data from each processor to a JSON plugin:")
+    print("\nSend 5 processed data from each processor to a JSON plugin:")
     json_plugin = JSONExport()
     ds.output_pipeline(5, json_plugin)
     ds.print_processors_stats()
