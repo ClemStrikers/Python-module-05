@@ -100,7 +100,7 @@ class DataStream:
     def print_processors_stats(self) -> None:
         print("== DataStream statistics ==")
         if not self._processors:
-            print("No processor found, no data")
+            print("No processor found, no data\n")
             return
         for proc in self._processors:
             name = proc.__class__.__name__.replace("Processor", " Processor")
@@ -111,12 +111,12 @@ class DataStream:
 
 
 def main() -> None:
-    print("=== Code Nexus- Data Stream ===")
+    print("=== Code Nexus- Data Stream ===\n")
     print("Initialize Data Stream...")
     ds = DataStream()
     ds.print_processors_stats()
 
-    print("Registering Numeric Processor")
+    print("Registering Numeric Processor\n")
     num_p = NumericProcessor()
     ds.register_processor(num_p)
 
@@ -136,7 +136,7 @@ def main() -> None:
     ds.process_stream(batch)
     ds.print_processors_stats()
 
-    print("Registering other data processors")
+    print("\nRegistering other data processors")
     txt_p = TextProcessor()
     log_p = LogProcessor()
     ds.register_processor(txt_p)
@@ -146,7 +146,7 @@ def main() -> None:
     ds.process_stream(batch)
     ds.print_processors_stats()
 
-    print("Consume some elements from the data processors:"
+    print("\nConsume some elements from the data processors:"
           "Numeric 3, Text 2, Log 1")
     for _ in range(3):
         num_p.output()
