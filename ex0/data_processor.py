@@ -111,8 +111,8 @@ def main() -> None:
     log_p = LogProcessor()
     print(f"Trying to validate input 'Hello': {log_p.validate('Hello')}")
     logs = [
-        {"level": "NOTICE", "msg": "Connection to server"},
-        {"level": "ERROR", "msg": "Unauthorized access!!"}
+        {"level": "NOTICE", "log_message": "Connection to server"},
+        {"level": "ERROR", "log_message": "Unauthorized access!!"}
     ]
     log_p.ingest(logs)
     print(f"Processing data: {logs}")
